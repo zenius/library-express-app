@@ -16,8 +16,15 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
+// setting template engine
+app.set('views', './src/views');
+app.set('view engine', 'pug');
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/index.html'));
+  res.render('index', {
+    title: 'My Library',
+    list: ['a', 'b'],
+  });
 });
 
 app.listen(port, () => {
