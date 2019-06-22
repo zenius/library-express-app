@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body class='myClass'>
+	<h1 class="myId"><%=title%></h1>
+	<p>
+		<h3>sub-header</h3>
+	</p>  
+	<ul>
+		<%for(let i = 0; i< list.length; i++){%> 
+			<li><%=list[i]%></li> 
+		<%}%>
+	</ul>
+</body>
+</html>
