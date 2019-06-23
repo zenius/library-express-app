@@ -5,12 +5,12 @@
   "main": "app.js",
   "scripts": {
     "start": "DEBUG=app nodemon app.js",
-    "lint": "eslint app.js"
+    "lint": "eslint app.js index.ejs"
   },
   "author": "zenius lama",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "4.3.1",
+    "bootstrap": "3.3.7",
     "chalk": "2.4.2",
     "debug": "4.1.1",
     "ejs": "2.6.2",
@@ -30,7 +30,7 @@
     "ignore": [
       "node_modules/**/node_modules"
     ],
-    "delay": "2000",
+    "delay": "1500",
     "env": {
       "NODE_ENV": "development",
       "PORT": 5000

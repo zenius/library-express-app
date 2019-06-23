@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const bookRouter = require('./src/routes/bookRoutes');
+const books = require('./books');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,16 +18,24 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
+
 // setting template engine
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+// setting routes
+app.use('/books', bookRouter);
+
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Library',
-    list: ['a', 'b'],
+    nav: [{ link: '/books', title: 'Books' },
+      { link: 'authors', title: 'Authors' },
+    ],
+    books,
   });
 });
+
 
 app.listen(port, () => {
   debug(`server listening on port ${chalk.green(port)}`);
