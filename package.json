@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "DEBUG=app nodemon app.js",
+    "start": "DEBUG=app, app:* nodemon app.js",
     "lint": "eslint app.js index.ejs"
   },
   "author": "zenius lama",
@@ -16,6 +16,7 @@
     "ejs": "2.6.2",
     "express": "4.15.2",
     "jquery": "3.4.1",
+    "mongodb": "3.2.7",
     "morgan": "1.9.1",
     "nodemon": "1.19.1",
     "pug": "2.0.4"

@@ -11,6 +11,7 @@ const nav = [
 
 // routing function
 const bookRouter = require('./src/routes/bookRoutes')(nav);
+const adminRouter = require('./src/routes/adminRoutes')(nav);
 const books = require('./books');
 
 const app = express();
@@ -32,6 +33,7 @@ app.set('view engine', 'ejs');
 
 // setting routes
 app.use('/books', bookRouter);
+app.use('/admin', adminRouter);
 
 app.get('/', (req, res) => {
   res.render('index', {
