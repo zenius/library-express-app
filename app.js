@@ -28,8 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // cookie-parser and expression-session
 app.use(cookieParser());
-app.use(session({ secret: 'library' }));
+app.use(session({ secret: 'library', resave: false, saveUninitialized: false }));
 
+// require passport config
+require('./src/config/passport')(app);
 
 // serving static files - public directory
 app.use(express.static(path.join(__dirname, 'public')));
