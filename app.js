@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const nav = [
   { link: '/books', title: 'Books' },
@@ -12,12 +13,16 @@ const nav = [
 // routing function
 const bookRouter = require('./src/routes/bookRoutes')(nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav);
-const books = require('./books');
+const authRouter = require('./src/routes/authRoutes')();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(morgan('tiny'));
+
+// body parser for Post methods
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // serving static files - public directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,6 +37,7 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 // setting routes
+app.use('/auth', authRouter);
 app.use('/books', bookRouter);
 app.use('/admin', adminRouter);
 
@@ -39,7 +45,6 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Library',
     nav,
-    books,
   });
 });
 
