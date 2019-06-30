@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "DEBUG=app, app:* nodemon app.js",
+    "start": "DEBUG=app,app:* nodemon app.js",
     "lint": "eslint app.js index.ejs"
   },
   "author": "zenius lama",
