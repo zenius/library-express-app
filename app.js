@@ -6,7 +6,7 @@ const path = require('path');
 
 const nav = [
   { link: '/books', title: 'Books' },
-  { link: 'authors', title: 'Authors' },
+  { link: '/authors', title: 'Authors' },
 ];
 
 // routing function

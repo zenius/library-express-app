@@ -15,14 +15,15 @@ function router(nav) {
         // connecting to the server
         client = await MongoClient.connect(url);
         debug('connected to server correctly');
-        const db = client.db(dbName);
 
+        const db = client.db(dbName);
         const response = await db.collection('books').insertMany(books.data);
 
         res.json(response);
       } catch (error) {
-        debug(error);
+        debug(error.stack);
       }
+      client.close();
     }());
   });
   return adminRouter;
