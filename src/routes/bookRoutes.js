@@ -8,6 +8,15 @@ const dbName = 'libraryApp';
 const bookRouter = express.Router();
 
 function router(nav) {
+  // authorize user: access books only if user is logged in
+  bookRouter.use((req, res, next) => {
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  });
+
   bookRouter.get('/', (req, res) => {
     (async function mongo() {
       let client;

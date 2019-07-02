@@ -55,7 +55,14 @@ function router(nav) {
     failureRedirect: '/',
   }));
 
-  authRouter.get('/profile', (req, res) => {
+  authRouter.route('/profile').all((req, res, next) => {
+    // authorize user: access profile only if logged in
+    if (req.user) {
+      next();
+    } else {
+      res.redirect('/');
+    }
+  }).get((req, res) => {
     // gets the user information from passportConfig function in passport.js
     res.json(req.user);
   });
