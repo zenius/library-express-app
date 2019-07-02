@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const { MongoClient } = require('mongodb');
 const debug = require('debug')('app: authRoutes');
 
@@ -6,7 +7,7 @@ const authRouter = express.Router();
 const url = 'mongodb://localhost:27017';
 const dbName = 'libraryApp';
 
-function router() {
+function router(nav) {
   authRouter.post('/signup', (req, res) => {
     debug(req.body);
     const { username, password } = req.body;
@@ -41,6 +42,18 @@ function router() {
       client.close();
     }());
   });
+
+  authRouter.get('/signin', (req, res) => {
+    res.render('signin', {
+      title: 'Sign In',
+      nav,
+    });
+  });
+
+  authRouter.post('/signin', passport.authenticate('local', {
+    successRedirect: '/auth/profile',
+    failureRedirect: '/',
+  }));
 
   authRouter.get('/profile', (req, res) => {
     // gets the user information from passportConfig function in passport.js
