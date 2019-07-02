@@ -13,8 +13,6 @@ function localStrategy() {
     };
     done(null, user);
   })));
-
-  return Strategy;
 }
 
 module.exports = localStrategy;
