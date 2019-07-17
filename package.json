@@ -1,14 +1,14 @@
 {
-  "name": "library",
+  "name": "library-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "This repo will demonstarte building Web Applications with Node js and Express.",
   "main": "app.js",
   "scripts": {
     "start": "DEBUG=app,app:* nodemon app.js",
     "lint": "eslint app.js index.ejs"
   },
   "author": "zenius lama",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "1.19.0",
     "bootstrap": "3.3.7",
@@ -41,5 +41,13 @@
       "NODE_ENV": "development",
       "PORT": 5000
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenius/library-express-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zenius/library-express-app/issues"
+  },
+  "homepage": "https://github.com/zenius/library-express-app#readme"
 }
