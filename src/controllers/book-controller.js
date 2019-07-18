@@ -4,7 +4,7 @@ const debug = require('debug')('app: bookController');
 const url = 'mongodb://localhost:27017';
 const dbName = 'libraryApp';
 
-function bookController(nav) {
+function bookController(bookService, nav) {
   function getBooks(req, res) {
     (async function mongo() {
       let client;
@@ -54,6 +54,10 @@ function bookController(nav) {
 
         // get single book by id
         const book = await collection.findOne({ _id: new ObjectID(id) });
+
+        // get the details using bookService
+        // eslint-disable-next-line no-underscore-dangle
+        book.details = await bookService.getDescriptionById(book._id);
 
         debug(book);
 

@@ -5,7 +5,7 @@ const books = require('../../books');
 
 const adminRouter = express.Router();
 
-function router(nav) {
+function router() {
   adminRouter.get('/', (req, res) => {
     const url = 'mongodb://localhost:27017';
     const dbName = 'libraryApp';
