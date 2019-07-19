@@ -57,7 +57,7 @@ function bookController(bookService, nav) {
 
         // get the details using bookService
         // eslint-disable-next-line no-underscore-dangle
-        book.details = await bookService.getDescriptionById(book._id);
+        book.details = await bookService.getDescriptionById(book.bookId);
 
         debug(book);
 
